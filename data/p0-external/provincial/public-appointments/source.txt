@@ -1,2 +1,2 @@
-Link: https://data.ontario.ca/en/dataset/ontario-public-appointments/resource/3d7e4af7-2885-4682-a3fe-1d7f8e2b136a
+Link: https://data.ontario.ca/en/dataset/ontario-public-appointments
 Accessed: 04/20/23
