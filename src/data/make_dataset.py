@@ -5,7 +5,10 @@ input_filepath = 'data/p0-raw/public-accounts/detailed-2021-22_2022-09-22.csv'
 df_accounts = pd.read_csv(input_filepath)
 df_accounts = df_accounts.rename(columns={' Amount ': 'Amount'})
 df_accounts.columns = df_accounts.columns.str.lower()
-df_accounts['Amount']
+df_accounts['amount']  = pd.to_numeric(df_accounts['amount'].str.replace('[^\-.0-9]', '', regex=True), errors='coerce')
+
+df_accounts[df_accounts['amount'] < 0]
+
 
 def main(input_filepath, output_filepath):
     """ Runs data processing scripts to turn raw data from (data/p0-raw) into
@@ -15,6 +18,7 @@ def main(input_filepath, output_filepath):
     df_accounts = pd.read_csv(input_filepath)
     df_accounts = df_accounts.rename(columns={' Amount ': 'Amount'})
     df_accounts.columns = df_accounts.columns.str.lower()
+    df_accounts['amount']  = pd.to_numeric(df_accounts['amount'].str.replace('[^\-.0-9]', '', regex=True), errors='coerce')
 
 
 if __name__ == '__main__':
