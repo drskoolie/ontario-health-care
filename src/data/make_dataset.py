@@ -4,7 +4,7 @@ def my_float_format(x):
     '''
     Number formatting with custom thousands separator
     '''
-    return f'{x:,.0f}'
+    return f'$ {x:,.0f}'
 
 pd.options.display.float_format = my_float_format
 
