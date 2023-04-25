@@ -1,5 +1,12 @@
 ## Part 0: Intialization
 import pandas as pd
+def my_float_format(x):
+    '''
+    Number formatting with custom thousands separator
+    '''
+    return f'{x:,.0f}'
+
+pd.options.display.float_format = my_float_format
 
 input_filepath = "data/p0-raw/public-accounts/detailed-2021-22_2022-09-22.csv"
 df_accounts = pd.read_csv(input_filepath)
@@ -10,6 +17,8 @@ df_accounts["amount"] = pd.to_numeric(
 )
 df_accounts.drop(df_accounts[df_accounts["amount"] < 0].index, inplace=True)
 df_accounts.dropna(axis="rows", inplace=True)
+
+df_accounts.groupby('ministry')['amount'].sum().sort_values(ascending=False)
 
 
 def main(input_filepath, output_filepath):
