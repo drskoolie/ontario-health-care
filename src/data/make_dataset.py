@@ -19,6 +19,7 @@ df_accounts.drop(df_accounts[df_accounts["amount"] < 0].index, inplace=True)
 df_accounts.dropna(axis="rows", inplace=True)
 
 df_accounts.groupby('ministry')['amount'].sum().sort_values(ascending=False)
+"{:,}".format(df_accounts['amount'].sum())
 
 
 def main(input_filepath, output_filepath):
@@ -49,5 +50,5 @@ def main(input_filepath, output_filepath):
 
 if __name__ == "__main__":
     input_filepath = "data/p0-raw/public-accounts/detailed-2021-22_2022-09-22.csv"
-    output_filepath = "data/p1-interim/public-accounts.csv"
+    output_filepath = "data/p1-interim/public-accounts_2021-2022.csv"
     main(input_filepath, output_filepath)
